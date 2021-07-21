@@ -26,13 +26,15 @@
 					</div>
 					
 					<div class="mt-2 mb-2 col-8">
-						<input class="form-control " type="text"  value="${cliente.tel}" name="tel" placeholder="Telefone:">
+						<input class="form-control " type="text"  value="${cliente.tel}" name="tel" placeholder="Telefone:" maxlength="15" onkeypress="mascaraTelefone(this, event)">
 						<div style="display:none;color:red" id="msgTel" ><h6>telefone é obrigatorio!</h6></div>
 					</div>
 					
 					<div class="mt-2 mb-2 col-8">
-						<input class="form-control " type="email"  value="${cliente.email}" name="email" placeholder="E-mail:">
+						<input class="form-control " type="email"  value="${cliente.email}" onblur="validacaoEmail(frm.email)" name="email" placeholder="E-mail:">
 						<div style="display:none;color:red" id="msgEmail" ><h6>e-mail é obrigatorio!</h6></div>
+						<div style="display:none;color:red" id="msgEmailInvalido" ><h6>e-mail esta invalido!</h6></div>
+						
 					</div>
 					
 					<div class="mt-2 mb-2 col-8">

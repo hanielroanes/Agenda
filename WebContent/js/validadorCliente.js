@@ -2,6 +2,50 @@
  *  Validador de formularios do cliente
  */
 
+function mascaraTelefone( campo, e )
+{
+	var kC = (document.all) ? event.keyCode : e.keyCode;
+	var numero = campo.value;
+	
+	if( kC!=8 && kC!=46 )
+	{
+		if( numero.length==0 )
+		{
+			campo.value = numero += '(';
+		}
+		else if( numero.length==3 )
+		{
+			campo.value = numero += ') ';
+		}
+		else if(numero.length==10){
+			campo.value = numero += '-';
+		}
+		else
+			campo.value = numero;
+	}
+}
+
+function validacaoEmail(field) {
+usuario = field.value.substring(0, field.value.indexOf("@"));
+dominio = field.value.substring(field.value.indexOf("@")+ 1, field.value.length);
+
+if ((usuario.length >=1) &&
+    (dominio.length >=3) &&
+    (usuario.search("@")==-1) &&
+    (dominio.search("@")==-1) &&
+    (usuario.search(" ")==-1) &&
+    (dominio.search(" ")==-1) &&
+    (dominio.search(".")!=-1) &&
+    (dominio.indexOf(".") >=1)&&
+    (dominio.lastIndexOf(".") < dominio.length - 1)) {
+document.getElementById("msgEmailInvalido").style.display = "none";
+}
+else{
+document.getElementById("msgEmailInvalido").style.display = "block";
+}
+}
+
+
 function validar() {
 	let submeter = true;
 	let nome = frm.nome.value;
